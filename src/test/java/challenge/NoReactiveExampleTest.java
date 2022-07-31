@@ -38,14 +38,13 @@ class NoReactiveExampleTest {
     }
 
     @Test
-    void totalDeAsisntenciasDeEstudiantesComMayorPuntajeDe(){
+    void totalDeAsistenciasDeEstudiantesComMayorPuntajeDe(){
 
         //arrange
         //act
-        var valor = noReactiveExample.totalDeAsisntenciasDeEstudiantesConMayorPuntajeDe(75);
+        var valor = noReactiveExample.totalDeAsistenciasDeEstudiantesConMayorPuntajeDe(75);
         //assert
-        System.out.println(valor);
-    }
+        Assertions.assertEquals(43, valor);    }
 
     @Test
     void elEstudianteTieneAsistenciasCorrectas(){
@@ -68,13 +67,23 @@ class NoReactiveExampleTest {
         //assert
         Assertions.assertEquals(52, valor);
     }
+    @Test
+    void losNombresDeEstudianteConPuntajeMayorA() {
+        var puntaje = 50;
+        var expected = List.of("juan", "pedro");
+
+        var estudiantes = noReactiveExample.losNombresDeEstudianteConPuntajeMayorA(puntaje);
+
+        Assertions.assertEquals(expected, estudiantes);
+    }
 
     @Test
-    void estudiantesAprovados(){
+    void estudiantesAprobados(){
         //arrange
+        var expected = List.of("juan", "pedro");
         //act
-        var valor = noReactiveExample.estudiantesAprovados();
+        var valor = noReactiveExample.estudiantesAprobados();
         //assert
-        System.out.println(valor);
+        Assertions.assertEquals(expected, valor);
     }
 }
