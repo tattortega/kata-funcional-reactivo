@@ -40,7 +40,7 @@ public class NoReactiveExample {
                 .collect(Collectors.toList());
     }
 
-    public Integer totalDeAsisntenciasDeEstudiantesConMayorPuntajeDe(int valor) {
+    public Integer totalDeAsistenciasDeEstudiantesConMayorPuntajeDe(int valor) {
         return estudianteList.stream()
                 .filter(estudiante -> estudiante.getPuntaje() >= valor)
                 .flatMap(estudiante -> estudiante.getAsistencias().stream())
@@ -49,7 +49,7 @@ public class NoReactiveExample {
 
     public boolean elEstudianteTieneAsistenciasCorrectas(Estudiante estudiante) {
         return Optional.of(estudiante)
-                .filter(this.asistenciasPemitidas())
+                .filter(this.asistenciasPermitidas())
                 .isPresent();
     }
 
@@ -60,7 +60,7 @@ public class NoReactiveExample {
         return total / cantidad;
     }
 
-    private Predicate<Estudiante> asistenciasPemitidas() {
+    private Predicate<Estudiante> asistenciasPermitidas() {
         return estudiante -> estudiante.getAsistencias()
                 .stream()
                 .reduce(0, Integer::sum) >= VALOR_PERMITIDO;
@@ -84,7 +84,7 @@ public class NoReactiveExample {
     }
 
 
-    public List<String> estudiantesAprovados(){
+    public List<String> estudiantesAprobados(){
         return estudianteList.stream()
                 .map(this::aprobar)
                 .filter(Estudiante::isAprobado)
